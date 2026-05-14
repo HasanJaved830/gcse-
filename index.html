@@ -35,24 +35,26 @@
     </div>
 
     <script>
-        function launchGame() {
+    function launchGame() {
+        const container = document.getElementById("gameContainer");
+        const frame = document.getElementById("gameFrame");
+        
+        // Fixed path using raw spaces instead of broken %20 codes
+        frame.src = "retro bowl college main/retrobowl/index.html";
+        container.style.display = "block";
+    }
+
+    // PANIC KEY: Press Escape to instantly close the game and show the portal
+    window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
             const container = document.getElementById("gameContainer");
             const frame = document.getElementById("gameFrame");
-            
-            // This safely loads Retro Bowl from your hidden inner subfolder
-            frame.src = "./retro%20bowl%20college%20main/retrobowl/index.html";
-            container.style.display = "block";
+            container.style.display = "none";
+            frame.src = ""; 
         }
-
-        // PANIC KEY: Press Escape to instantly close the game and show the portal
-        window.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const container = document.getElementById("gameContainer");
-                const frame = document.getElementById("gameFrame");
-                container.style.display = "none";
-                frame.src = ""; 
-            }
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
+
+        
